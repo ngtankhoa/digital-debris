@@ -2,6 +2,17 @@
 const { frontmatter } = Astro.props
 ---
 
-<h1>{frontmatter.title}</h1>
-<p>writter by {frontmatter.author}</p>
-<slot />
+<html>
+  <head>
+    <meta charset='utf-8' />
+    <title>{frontmatter.title}</title>
+  </head>
+  <body>
+    <h1>{frontmatter.title}</h1>
+    <p>{frontmatter.pubDate.toString().slice(0, 10)}</p>
+    <p><em>{frontmatter.description}</em></p>
+    <p>Written by: {frontmatter.author}</p>
+    <img src={frontmatter.image.url} width='300' alt={frontmatter.image.alt} />
+    <slot />
+  </body>
+</html>
